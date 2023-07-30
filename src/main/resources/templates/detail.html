@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="ko">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -18,14 +18,14 @@
       <div class="col-lg-6">
         <div class="card">
           <!-- 게시물 이미지 -->
-          <img class="card-img-top" src="/images/img.jpg" alt="Card image cap">
+          <img class="card-img-top" src="/images/img.jpg" th:src="${post.image}" alt="Card image cap">
           <div class="card-body">
             <!-- 게시물 제목 -->
-            <h5 class="card-title">게시물 제목</h5>
+            <h5 class="card-title" th:text="${post.title}" >게시물 제목</h5>
             <!-- 게시물 작성자 및 날짜 -->
-            <h6 class="card-subtitle mb-2 text-muted">작성자 | 날짜</h6>
+            <h6 class="card-subtitle mb-2 text-muted" th:text="${post.username}">작성자 <span th:text="${post.currentTime}">날짜</span></h6>
             <!-- 게시물 내용 -->
-            <p class="card-text">여기에 게시물의 내용을 적어주세요.</p>
+            <p class="card-text" th:text="${post.content}">여기에 게시물의 내용을 적어주세요.</p>
             <button class="btn btn-secondary" onclick="window.history.back();">뒤로 가기</button>
           </div>
         </div>
