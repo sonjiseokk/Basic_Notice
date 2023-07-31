@@ -44,13 +44,11 @@ public class MemoryMemberRepository implements MemberRepository {
     }
 
     @Override
-    public Optional<Member> login(MemberDto dto) {
-        List<Member> memberList = findAll();
-        return memberList.stream()
-                .findAny()
-                .filter(
-                        (member) -> dto.getEmail().equals(member.getEmail())
-                                && dto.getPassword().equals(member.getPassword()));
+    public Optional<Member> findByEmail(String email) {
+        return findAll().stream()
+                .filter(m -> m.getEmail().equals(email))
+                .findFirst();
     }
+
 
 }

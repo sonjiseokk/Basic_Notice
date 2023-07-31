@@ -38,9 +38,9 @@ public class MemberServiceV1 implements MemberService{
     }
 
     @Override
-    public boolean login(MemberDto dto) {
-        Optional<Member> loginMember = memberRepository.login(dto);
-        return loginMember.isPresent();
-
+    public Member login(MemberDto dto) {
+        return memberRepository.findByEmail(dto.getEmail())
+                .filter(m -> m.getPassword().equals(dto.getPassword()))
+                .orElse(null);
     }
 }

@@ -18,7 +18,7 @@
       <div class="col-lg-6">
         <div class="card">
           <!-- 게시물 이미지 -->
-          <img class="card-img-top" src="/images/img.jpg" th:src="${post.image}" alt="Card image cap">
+          <img class="card-img-top" src="/images/img.jpg" th:src="@{'/images/' + ${post.image}}" alt="Card image cap">
           <div class="card-body">
             <!-- 게시물 제목 -->
             <h5 class="card-title" th:text="${post.title}" >게시물 제목</h5>

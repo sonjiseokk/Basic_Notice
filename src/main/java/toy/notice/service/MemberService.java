@@ -10,6 +10,6 @@ public interface MemberService {
     Member findById(Long id);
     List<Member> findAll();
     void update(Long id, MemberDto memberDto);
-    boolean login(MemberDto dto);
+    Member login(MemberDto dto);
 
 }

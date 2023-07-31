@@ -22,8 +22,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class NoticeController {
     private final NoticeService noticeService;
-    @Value("${file.dir}")
-    private String fileDir;
+
     @GetMapping("/write")
     public String writePage(){
         return "write";
@@ -31,15 +30,7 @@ public class NoticeController {
 
     @PostMapping("/write")
     public String write(@ModelAttribute PostWriteForm form,Model model) throws IOException {
-        Post post = noticeService.write(form);
-        if (!form.getImage().isEmpty()) {
-            String fileName = form.getImage().getOriginalFilename();
-            String fullPath = fileDir + fileName;
-            log.info("파일 저장 full path={}", fullPath);
-            form.getImage().transferTo(new File(fullPath));
-            post.setImage(fileName);
-        }
-        log.info("post={}",post);
+        noticeService.write(form);
         return "redirect:/index";
     }
 
