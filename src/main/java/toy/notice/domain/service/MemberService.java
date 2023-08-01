@@ -1,4 +1,4 @@
-package toy.notice.service;
+package toy.notice.domain.service;
 
 import toy.notice.domain.member.Member;
 import toy.notice.domain.member.MemberDto;

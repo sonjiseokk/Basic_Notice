@@ -1,4 +1,4 @@
-package toy.notice.controller;
+package toy.notice.web.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import toy.notice.domain.member.Member;
 import toy.notice.domain.member.MemberDto;
-import toy.notice.service.MemberService;
+import toy.notice.domain.service.MemberService;
 
 import javax.validation.Valid;
 

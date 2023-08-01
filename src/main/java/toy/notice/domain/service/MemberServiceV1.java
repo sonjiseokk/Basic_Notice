@@ -1,15 +1,13 @@
-package toy.notice.service;
+package toy.notice.domain.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import toy.notice.domain.member.Member;
 import toy.notice.domain.member.MemberDto;
-import toy.notice.repository.MemberRepository;
-import toy.notice.repository.MemoryMemberRepository;
+import toy.notice.web.repository.MemberRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j

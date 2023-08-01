@@ -1,4 +1,4 @@
-package toy.notice.repository;
+package toy.notice.web.repository;
 
 import toy.notice.domain.post.Post;
 import toy.notice.domain.post.PostWriteForm;

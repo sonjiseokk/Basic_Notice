@@ -1,13 +1,13 @@
 package toy.notice.service;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import toy.notice.domain.member.Member;
 import toy.notice.domain.member.MemberDto;
-import toy.notice.repository.MemberRepository;
+import toy.notice.domain.service.MemberService;
+import toy.notice.web.repository.MemberRepository;
 
 import java.util.List;
 
@@ -62,7 +62,7 @@ class MemberServiceTest {
         MemberDto canLogin = new MemberDto("abc@gmail.com", "123");
         MemberDto cantLogin = new MemberDto("abc@gmail.com", "1234");
 
-        assertThat(memberService.login(canLogin)).isTrue();
-        assertThat(memberService.login(cantLogin)).isFalse();
+        assertThat(memberService.login(canLogin)).isNotNull();
+        assertThat(memberService.login(cantLogin)).isNull();
     }
 }

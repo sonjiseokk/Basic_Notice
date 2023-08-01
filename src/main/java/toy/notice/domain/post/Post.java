@@ -13,16 +13,16 @@ public class Post {
     private String content;
     private String username;
     private String image;
-    private LocalDate currentTime;
+    private LocalDate postdate;
 
     public Post() {
     }
 
-    public Post(String title, String content, String username, String image, LocalDate currentTime) {
+    public Post(String title, String content, String username, String image, LocalDate postdate) {
         this.title = title;
         this.content = content;
         this.username = username;
         this.image = image;
-        this.currentTime = currentTime;
+        this.postdate = postdate;
     }
 }

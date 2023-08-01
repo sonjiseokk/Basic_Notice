@@ -1,8 +1,7 @@
-package toy.notice.controller;
+package toy.notice.web.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,10 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import toy.notice.domain.post.Post;
 import toy.notice.domain.post.PostWriteForm;
-import toy.notice.service.MemberService;
-import toy.notice.service.NoticeService;
+import toy.notice.domain.service.NoticeService;
 
-import java.io.File;
 import java.io.IOException;
 
 @Controller

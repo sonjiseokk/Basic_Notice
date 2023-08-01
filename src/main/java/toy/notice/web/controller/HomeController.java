@@ -1,4 +1,4 @@
-package toy.notice.controller;
+package toy.notice.web.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import toy.notice.domain.post.Post;
-import toy.notice.service.NoticeService;
+import toy.notice.domain.service.NoticeService;
 
 import java.util.List;
 

@@ -1,13 +1,14 @@
-package toy.notice.repository;
+package toy.notice.web.repository;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import toy.notice.domain.member.Member;
 import toy.notice.domain.member.MemberDto;
 
 import java.util.*;
 
-@Controller
+//@Repository
 @Slf4j
 public class MemoryMemberRepository implements MemberRepository {
     private final Map<Long, Member> repository = new HashMap<>();

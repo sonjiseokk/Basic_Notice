@@ -1,4 +1,4 @@
-package toy.notice.repository;
+package toy.notice.web.repository;
 
 import toy.notice.domain.member.Member;
 import toy.notice.domain.member.MemberDto;
