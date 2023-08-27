@@ -2,21 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="toy.notice.web.mybatis.MemberMapper">
-    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+    <insert id="saveMember" useGeneratedKeys="true" keyProperty="id">
         insert into member (email, username, password)
         values (#{email}, #{username}, #{password})
     </insert>
-    <select id="findById" resultType="Member">
+    <select id="findByIdMember" resultType="toy.notice.domain.member.Member">
         select id, email, username, password
         from member
         where id = #{id}
     </select>
 
-    <select id="findAll" resultType="Member">
+    <select id="findAllMember" resultType="toy.notice.domain.member.Member">
         select id, email, username, password
         from member
     </select>
-    <update id="update">
+    <update id="updateMember">
         update member
         set email=#{updateParam.email},
             username=#{updateParam.username},

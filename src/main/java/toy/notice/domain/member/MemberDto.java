@@ -24,4 +24,10 @@ public class MemberDto {
         this.email = email;
         this.password = password;
     }
+
+    public MemberDto(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 }

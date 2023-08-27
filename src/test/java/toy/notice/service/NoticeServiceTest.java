@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.transaction.annotation.Transactional;
+import toy.notice.domain.member.Member;
 import toy.notice.domain.post.Post;
 import toy.notice.domain.post.PostWriteForm;
 import toy.notice.domain.service.NoticeService;
@@ -32,9 +33,11 @@ class NoticeServiceTest {
     @Test
     void writeAndSave() throws IOException {
         PostWriteForm userInput = new PostWriteForm("안녕하세요", "싱글 컨텐츠입니다", multipartFile);
-        Post post = noticeService.write(userInput);
+        Member member = new Member("test@gmail.com", "나는테스트유저", "qqq");
+        Post post = noticeService.write(userInput,member);
 
         assertThat(post.getContent()).isEqualTo(userInput.getContent());
+        assertThat(post.getUsername()).isEqualTo(member.getUsername());
     }
 
     @Test
@@ -48,8 +51,9 @@ class NoticeServiceTest {
 
         PostWriteForm userInput = new PostWriteForm("안녕하세요1", "안녕하세요!!컨텐츠입니다1", multipartFile);
         String realImageSrc = "/images/test.jpg";
+        Member member = new Member("test@gmail.com", "나는테스트유저", "qqq");
 
-        Post post = noticeService.write(userInput);
+        Post post = noticeService.write(userInput,member);
         String src = "/images/" + post.getImage();
         assertThat(src).isEqualTo(realImageSrc);
     }

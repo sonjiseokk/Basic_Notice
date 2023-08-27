@@ -59,10 +59,25 @@ class MemberServiceTest {
         Member member = new Member("abc@gmail.com", "aa", "123");
         memberService.save(member);
         // 유저가 로그인을 시도했다고 가정
-        MemberDto canLogin = new MemberDto("abc@gmail.com", "123");
-        MemberDto cantLogin = new MemberDto("abc@gmail.com", "1234");
+        Member canLogin = new Member("abc@gmail.com", "123");
+        Member cantLogin = new Member("abc@gmail.com", "1234");
 
         assertThat(memberService.login(canLogin)).isNotNull();
         assertThat(memberService.login(cantLogin)).isNull();
+    }
+
+    @Test
+    void update() {
+        Member member = new Member("abc@gmail.com", "aa", "123");
+        Member savedMember = memberService.save(member);
+
+        MemberDto userInputFormData = new MemberDto( "aa","abc@gmail.com", "1234");
+
+        Member modifyMember = new Member(userInputFormData.getEmail(), userInputFormData.getUsername(), userInputFormData.getPassword());
+        memberService.update(savedMember.getId(), modifyMember);
+
+        Member updatedMember = memberService.findById(savedMember.getId());
+        assertThat(updatedMember.getPassword()).isEqualTo(userInputFormData.getPassword());
+
     }
 }

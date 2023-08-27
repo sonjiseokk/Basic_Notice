@@ -16,7 +16,6 @@ public class MemberServiceV1 implements MemberService{
     private final MemberRepository memberRepository;
     @Override
     public Member save(Member member) {
-        log.info("memberService 저장");
         return memberRepository.save(member);
     }
 
@@ -31,14 +30,15 @@ public class MemberServiceV1 implements MemberService{
     }
 
     @Override
-    public void update(Long id, MemberDto memberDto) {
-        memberRepository.update(id, memberDto);
+    public Member update(Long id, Member member) {
+        memberRepository.update(id, member);
+        return memberRepository.findById(id);
     }
 
     @Override
-    public Member login(MemberDto dto) {
-        return memberRepository.findByEmail(dto.getEmail())
-                .filter(m -> m.getPassword().equals(dto.getPassword()))
+    public Member login(Member member) {
+        return memberRepository.findByEmail(member.getEmail())
+                .filter(m -> m.getPassword().equals(member.getPassword()))
                 .orElse(null);
     }
 }

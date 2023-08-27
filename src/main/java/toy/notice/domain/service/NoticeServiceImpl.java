@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import toy.notice.domain.member.Member;
 import toy.notice.domain.post.Post;
 import toy.notice.domain.post.PostWriteForm;
 import toy.notice.web.repository.PostRepository;
@@ -16,27 +17,11 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 public class NoticeServiceImpl implements NoticeService {
-    @Value("${file.dir}")
-    private String fileDir;
     private final PostRepository postRepository;
     @Override
-    public Post write(PostWriteForm form) throws IOException {
-        Post post = postRepository.write(form);
-        if (form.getImage() != null) {
-            imagePath(form, post);
-        }
-        log.info("post={}",post);
-        return post;
-    }
-
-    private void imagePath(PostWriteForm form, Post post) throws IOException {
-        if (!form.getImage().isEmpty()) {
-            String fileName = form.getImage().getOriginalFilename();
-            String fullPath = fileDir + fileName;
-            form.getImage().transferTo(new File(fullPath));
-
-            post.setImage(fileName); // save only the file name, not the full path
-        }
+    public Post write(PostWriteForm form, Member member) throws IOException {
+        Post write = postRepository.write(form,member);
+        return write;
     }
 
     @Override

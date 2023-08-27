@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-container {
+            max-width: 500px;
+        }
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div style="height: 200px;"></div>
+        <form id="update-profile" class="container form-container" action="/mypage" method="post" th:object="${loginMember}">
+            <h2>마이페이지</h2>
+            <div class="form-group">
+                <label for="username">닉네임:</label>
+                <input type="text" class="form-control" id="username" name="username"
+                       th:errorclass="field-error" th:field="*{username}" placeholder="닉네임을 입력하세요">
+                <div class="field-error" th:errors="*{username}">
+                    닉네임 입력 오류
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email"
+                       th:errorclass="field-error" th:field="*{email}" placeholder="이메일을 입력하세요">
+                <div class="field-error" th:errors="*{email}">
+                    이메일 입력 오류
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">비밀번호:</label>
+                <input type="password" class="form-control" id="password" name="password"
+                       th:errorclass="field-error" th:field="*{password}" placeholder="비밀번호를 입력하세요">
+                <div class="field-error" th:errors="*{password}">
+                    비밀번호 입력 오류
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">수정</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

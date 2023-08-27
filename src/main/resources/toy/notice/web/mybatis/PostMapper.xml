@@ -1,27 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="toy.notice.web.mybatis.MemberMapper">
-    <insert id="save" useGeneratedKeys="true" keyProperty="id">
-        insert into member (email, username, password)
-        values (#{email}, #{username}, #{password})
+<mapper namespace="toy.notice.web.mybatis.PostMapper">
+    <insert id="savePost" useGeneratedKeys="true" keyProperty="id">
+        insert into post (title, content, username, image, post_date)
+        values (#{title}, #{content}, #{username}, #{image}, #{postDate})
     </insert>
-    <select id="findById" resultType="Member">
-        select id, email, username, password
-        from member
+    <select id="findAllPost" resultType="toy.notice.domain.post.Post">
+        select id, title, content, username, image, post_date
+        from post
+    </select>
+    <select id="findByIdPost" resultType="toy.notice.domain.post.Post">
+        select title, content, username, image, post_date
+        from post
         where id = #{id}
     </select>
-
-    <select id="findAll" resultType="Member">
-        select id, email, username, password
-        from member
-    </select>
-    <update id="update">
-        update member
-        set email=#{updateParam.email},
-            username=#{updateParam.username},
-            password=#{updateParam.password}
-        where id = #{id}
-    </update>
-
 </mapper>

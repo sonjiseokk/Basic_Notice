@@ -1,10 +1,11 @@
-package toy.notice.web.repository;
+package toy.notice.web.repository.memory;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import toy.notice.domain.member.Member;
 import toy.notice.domain.member.MemberDto;
+import toy.notice.web.repository.MemberRepository;
 
 import java.util.*;
 
@@ -38,10 +39,10 @@ public class MemoryMemberRepository implements MemberRepository {
     }
 
     @Override
-    public void update(Long id,MemberDto memberDto) {
-        Member member = findById(id);
-        member.setEmail(memberDto.getEmail());
-        member.setUsername(memberDto.getUsername());
+    public void update(Long id,Member member) {
+        Member findMember = findById(id);
+        findMember.setEmail(member.getEmail());
+        findMember.setUsername(member.getUsername());
     }
 
     @Override

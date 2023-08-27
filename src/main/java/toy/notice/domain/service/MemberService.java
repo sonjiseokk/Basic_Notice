@@ -9,7 +9,7 @@ public interface MemberService {
     Member save(Member member);
     Member findById(Long id);
     List<Member> findAll();
-    void update(Long id, MemberDto memberDto);
-    Member login(MemberDto dto);
+    Member update(Long id, Member member);
+    Member login(Member dto);
 
 }

@@ -1,6 +1,7 @@
 package toy.notice.web.mybatis;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import toy.notice.domain.member.Member;
 import toy.notice.domain.member.MemberDto;
 
@@ -9,9 +10,10 @@ import java.util.Optional;
 
 @Mapper
 public interface MemberMapper {
-    void save(Member member);
-    Member findById(Long id);
-    List<Member> findAll();
-    void update(Long id, MemberDto memberDto);
+    void saveMember(Member member);
+    Member findByIdMember(Long id);
+    List<Member> findAllMember();
+    void updateMember(@Param("id") Long id, @Param("updateParam") Member updateParam);
+
 
 }
