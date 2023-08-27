@@ -66,8 +66,8 @@ For building and running the application you need:
 ## 아키텍쳐
 
 ### 디렉토리 구조
-📦src
 ```bash
+📦src
 ┣ 📂main
 ┃ ┣ 📂generated
 ┃ ┣ 📂java
